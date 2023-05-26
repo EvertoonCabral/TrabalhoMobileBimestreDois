@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:orientation="vertical"
+    >
+  <ScrollView
+      android:layout_width="match_parent"
+      android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/txtTitulo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="CADASTRO DE NOTA DE ALUNO"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:layout_margin="5dp"
+        />
+
+    <TextView
+        android:id="@+id/txtNome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="NOME"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="10dp"
+        />
+    <EditText
+        android:id="@+id/edNome"
+        android:hint="Informe o nome"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:padding="10dp"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginVertical="10dp"
+        android:inputType="text"
+        android:background="@drawable/bg_edit_text"
+        />
+    <TextView
+        android:id="@+id/txtRA"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="RA"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="10dp"
+        />
+    <EditText
+        android:id="@+id/edRA"
+        android:hint="Informe o RA"
+        android:layout_width="match_parent"
+        android:padding="10dp"
+        android:layout_height="50dp"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginVertical="10dp"
+        android:inputType="number"
+        android:background="@drawable/bg_edit_text"
+        />
+
+    <TextView
+        android:id="@+id/txtDisciplina"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="DISCIPLINA"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="10dp"
+        />
+    <Spinner
+        android:id="@+id/spDisciplina"
+        android:contentDescription="selecione"
+        android:padding="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/bg_edit_text"
+        />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:padding="15dp"
+        android:orientation="horizontal">
+
+      <TextView
+          android:id="@+id/txtNota"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="NOTA"
+          android:textSize="15sp"
+          android:textStyle="bold"
+          app:layout_constraintBottom_toTopOf="@id/edNota"
+
+          app:layout_constraintStart_toStartOf="@id/edNota"
+          />
+
+      <EditText
+          android:id="@+id/edNota"
+          android:layout_width="150dp"
+          android:layout_height="50dp"
+          android:hint="0"
+          android:padding="10dp"
+          android:layout_marginHorizontal="20dp"
+          android:layout_marginVertical="10dp"
+          android:inputType="number"
+          android:background="@drawable/bg_edit_text"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toEndOf="@id/spBimestre"
+          app:layout_constraintTop_toBottomOf="@+id/txtNota"
+          />
+
+      <TextView
+          android:id="@+id/txtBimestre"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="BIMESTRE"
+          android:textSize="15sp"
+          android:textStyle="bold"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toTopOf="parent" />
+
+      <Spinner
+          android:id="@+id/spBimestre"
+          android:layout_width="150dp"
+          android:layout_height="50dp"
+          android:contentDescription="selecione"
+          android:layout_marginTop="10dp"
+          android:padding="10dp"
+          android:orientation="vertical"
+          android:background="@drawable/bg_edit_text"
+          app:layout_constraintBottom_toBottomOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toBottomOf="@+id/txtBimestre"
+          app:layout_constraintEnd_toStartOf="@id/edNota"/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <LinearLayout
+        android:layout_marginHorizontal="20dp"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+      <Button
+          android:id="@+id/btnAdicionar"
+          android:text="ADICIONAR"
+          android:layout_width="match_parent"
+          android:layout_height="50dp"
+          android:padding="10dp"
+          />
+      <Button
+          android:id="@+id/btnverNota"
+          android:text="VER NOTAS"
+          android:layout_width="match_parent"
+          android:layout_height="50dp"
+          android:layout_marginTop="30dp"
+          android:layout_marginHorizontal="40dp"
+          android:padding="10dp"
+          />
+      <Button
+          android:id="@+id/btnverMedia"
+          android:text="VER MEDIA"
+          android:layout_width="match_parent"
+          android:layout_height="50dp"
+          android:layout_marginHorizontal="40dp"
+          android:padding="10dp"
+          />
+    </LinearLayout>
+
+    </LinearLayout>
+
+  </ScrollView>
+
+
+
+
+</LinearLayout>
