@@ -37,18 +37,21 @@ public class alunoAdapter extends BaseAdapter {
         return i;
     }
 
-    @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
-        if(view == null){
-            view = LayoutInflater.from(context).inflate(R.layout.activity_tela_de_nota,viewGroup, false);
+        if (view == null) {
+            LayoutInflater inflater = LayoutInflater.from(context);
+            view = inflater.inflate(R.layout.list_item_aluno, viewGroup, false);
         }
+
         Aluno aluno = listaAluno.get(i);
-        TextView tvNomeAluno= view.findViewById(R.id.txtNome);
+        TextView tvNomeAluno = view.findViewById(R.id.txtNome);
         TextView tvRaAluno = view.findViewById(R.id.txtRA);
 
         tvRaAluno.setText(String.valueOf(aluno.getRa()));
         tvNomeAluno.setText(aluno.getNome());
+
         return view;
     }
+
 
 }

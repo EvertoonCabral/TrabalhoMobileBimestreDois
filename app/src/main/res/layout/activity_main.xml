@@ -170,7 +170,7 @@
           />
       <Button
           android:id="@+id/btnverNota"
-          android:text="VER NOTAS"
+          android:text="VER media"
           android:layout_width="match_parent"
           android:layout_height="50dp"
           android:layout_marginTop="30dp"
@@ -179,7 +179,7 @@
           />
       <Button
           android:id="@+id/btnverMedia"
-          android:text="VER MEDIA"
+          android:text="VER nota"
           android:layout_width="match_parent"
           android:layout_height="50dp"
           android:layout_marginHorizontal="40dp"

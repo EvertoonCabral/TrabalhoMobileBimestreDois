@@ -2,6 +2,7 @@ package com.everton.trabalhomobilebimestre2;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -19,6 +20,7 @@ public class TelaDeNota extends AppCompatActivity {
 
     private ListView lvAlunos;
     private Spinner spAlunoTelaAluno;
+    private ArrayList<Aluno> listaAlunos;
     private Aluno alunoSelecionado;
 
     @Override
@@ -29,7 +31,10 @@ public class TelaDeNota extends AppCompatActivity {
         lvAlunos = findViewById(R.id.lvListaAluno);
         spAlunoTelaAluno = findViewById(R.id.spAlunoTelaAluno);
 
-        atualizaLista(Globais.listaAluno);
+        Intent intent = getIntent();
+        listaAlunos = (ArrayList<Aluno>) intent.getSerializableExtra("listaAlunos");
+
+        atualizaLista(listaAlunos);
 
         lvAlunos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -40,13 +45,13 @@ public class TelaDeNota extends AppCompatActivity {
         });
     }
 
-    private void atualizaLista(ArrayList<Aluno> lista){
+    private void atualizaLista(ArrayList<Aluno> lista) {
         alunoAdapter adapter = new alunoAdapter(this, lista);
         lvAlunos.setAdapter(adapter);
     }
 
+
     private void exibirAlunoSelecionado(Aluno aluno){
         Toast.makeText(this, "RA: "+aluno.getRa()+" Nome: "+aluno.getNome(), Toast.LENGTH_LONG).show();
     }
-
 }
