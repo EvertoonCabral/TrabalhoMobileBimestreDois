@@ -4,44 +4,44 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".TelaDeNota"
+    tools:context=".TelaMedia"
     android:orientation="vertical"
     >
-<TextView
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:text="relação de notas"
-    android:textAllCaps="true"
-    android:textSize="20dp"
-    android:textStyle="bold"
-    android:textAlignment="center"
-    />
+
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="notas"
+        android:text="relação de Media"
         android:textAllCaps="true"
         android:textSize="20dp"
         android:textStyle="bold"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="20dp"
+        android:textAlignment="center"
         />
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:text="Disciplina"
+        android:textAllCaps="true"
+        android:textSize="20dp"
+        android:textStyle="bold" />
+
     <Spinner
-        android:id="@+id/spAlunoTelaAluno"
+        android:id="@+id/spDisciplinaTelaMedia"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:prompt="Selecione"
         android:layout_marginLeft="20dp"
         />
-<ListView
+    <ListView
 
-    android:id="@+id/lvListaAluno"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_margin="30dp"
-/>
-
+        android:id="@+id/lvListaAluno"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="30dp"
+        />
 
 </LinearLayout>

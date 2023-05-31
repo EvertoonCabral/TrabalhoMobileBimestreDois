@@ -60,7 +60,7 @@
         android:layout_marginTop="10dp"
         />
     <EditText
-        android:id="@+id/edRA"
+        android:id="@+id/edRa"
         android:hint="Informe o RA"
         android:layout_width="match_parent"
         android:padding="10dp"

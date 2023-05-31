@@ -33,7 +33,7 @@ public class TelaDeNota extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                alunoSelecionado = (Aluno) lvAlunos.getItemAtPosition();
+               // alunoSelecionado = (Aluno) lvAlunos.getItemAtPosition();
 
                 exibirAlunoSelecionado(alunoSelecionado);
 
