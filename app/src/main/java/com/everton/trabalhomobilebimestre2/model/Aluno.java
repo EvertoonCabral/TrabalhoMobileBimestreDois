@@ -4,25 +4,29 @@ import java.util.ArrayList;
 
 public class Aluno {
 
-    private int ra;
+    private String ra;
     private String nome;
-    private ArrayList<Disciplina> listadisciplina;
+    private ArrayList<String>listadisciplina;
+    private ArrayList<String> listaNotas;
 
 
-    public Aluno(int ra, String nome, ArrayList<Disciplina> listadisciplina) {
+    public Aluno(String ra, String nome, String disciplina, String nota) {
         this.ra = ra;
         this.nome = nome;
-        this.listadisciplina = listadisciplina;
+        this.listadisciplina = new ArrayList<>();
+        this.listadisciplina.add(disciplina);
+        this.listaNotas = new ArrayList<>();
+        this.listaNotas.add(nota);
     }
 
     public Aluno() {
     }
 
-    public int getRa() {
+    public String getRa() {
         return ra;
     }
 
-    public void setRa(int ra) {
+    public void setRa(String ra) {
         this.ra = ra;
     }
 
@@ -34,12 +38,20 @@ public class Aluno {
         this.nome = nome;
     }
 
-    public ArrayList<Disciplina> getListadisciplina() {
+    public ArrayList<String> getListadisciplina() {
         return listadisciplina;
     }
 
-    public void setListadisciplina(ArrayList<Disciplina> listadisciplina) {
+    public void setListadisciplina(ArrayList<String> listadisciplina) {
         this.listadisciplina = listadisciplina;
+    }
+
+    public ArrayList<String> getListaNotas() {
+        return listaNotas;
+    }
+
+    public void setListaNotas(ArrayList<String> listaNotas) {
+        this.listaNotas = listaNotas;
     }
 
     @Override
@@ -48,6 +60,13 @@ public class Aluno {
                 "ra=" + ra +
                 ", nome='" + nome + '\'' +
                 ", listadisciplina=" + listadisciplina +
+                ", listaNotas=" + listaNotas +
                 '}';
+    }
+
+    public void AdicionarAluno(String materia){
+
+    listadisciplina.add(materia);
+
     }
 }

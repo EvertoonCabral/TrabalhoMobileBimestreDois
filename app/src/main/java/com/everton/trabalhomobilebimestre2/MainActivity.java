@@ -10,6 +10,8 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Spinner;
 
+import com.everton.trabalhomobilebimestre2.model.Aluno;
+
 public class MainActivity extends AppCompatActivity {
 
 
@@ -25,6 +27,26 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         iniciarComponentes();
+
+
+
+        btnAdicionar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                String nomeAluno = edNome.getText().toString();
+                String raAluno = edRa.getText().toString();
+                String notaAluno = edNota.getText().toString();
+                String bimestreAluno = spBimestre.getSelectedItem().toString();
+                String disciplinaAluno = spDisciplina.getSelectedItem().toString();
+
+                Aluno aluno = new Aluno(raAluno, nomeAluno, disciplinaAluno, notaAluno);
+                //ra nome discplina e nota
+
+
+
+            }
+        });
 
 
         btnverNota.setOnClickListener(new View.OnClickListener() {
@@ -46,6 +68,8 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
+
+
 
     public void iniciarComponentes(){
 

@@ -33,7 +33,6 @@
         android:id="@+id/spDisciplinaTelaMedia"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:prompt="Selecione"
         android:layout_marginLeft="20dp"
         />
     <ListView
