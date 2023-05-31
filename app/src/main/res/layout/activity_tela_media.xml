@@ -37,7 +37,7 @@
         />
     <ListView
 
-        android:id="@+id/lvListaAluno"
+        android:id="@+id/lvListaDisciplina"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="30dp"
