@@ -15,6 +15,8 @@ public class Aluno implements Parcelable {
     private String nome;
     private ArrayList<Nota> listaNotas;
 
+    private String disciplina;
+
     public Aluno(String ra, String nome) {
         this.ra = ra;
         this.nome = nome;
@@ -38,6 +40,10 @@ public class Aluno implements Parcelable {
             return new Aluno[size];
         }
     };
+
+    public String getDisciplina() {
+        return disciplina;
+    }
 
     public String getRa() {
         return ra;

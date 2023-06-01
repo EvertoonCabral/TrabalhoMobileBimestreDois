@@ -30,7 +30,8 @@ public class TelaDeNota extends AppCompatActivity {
         setContentView(R.layout.activity_tela_de_nota);
 
         spAlunoTelaAluno = findViewById(R.id.spAlunoTelaAluno);
-        // atualizar a lista quando um aluno for selecionado
+        lvAlunos = findViewById(R.id.lvListaAluno);
+
         ArrayList<Aluno> listaAlunos = Globais.getListaAlunos();
         alunoAdapter adapter = new alunoAdapter(this, listaAlunos);
         spAlunoTelaAluno.setAdapter(adapter);
@@ -38,26 +39,14 @@ public class TelaDeNota extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 Aluno alunoSelecionado = (Aluno) parent.getItemAtPosition(position);
-
-
-                ArrayList<Aluno> listaAlunosSelecionados = new ArrayList<>();
-                listaAlunosSelecionados.add(alunoSelecionado); //criando uma lista para armazenar os alunos neste escopo
-
-
-                alunoAdapter adapter = new alunoAdapter(TelaDeNota.this, listaAlunosSelecionados);
-
-                // Defina o novo adapter para o ListView
-                lvAlunos.setAdapter(adapter);
+                filtrarAlunosPorDisciplina(alunoSelecionado);
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
-
+                // Implementação necessária aqui se nada for selecionado
             }
         });
-
-        lvAlunos = findViewById(R.id.lvListaAluno);
-        spAlunoTelaAluno = findViewById(R.id.spAlunoTelaAluno);
 
         Intent intent = getIntent();
         listaAlunos = (ArrayList<Aluno>) intent.getSerializableExtra("listaAlunos");
@@ -73,13 +62,20 @@ public class TelaDeNota extends AppCompatActivity {
         });
     }
 
+    private void filtrarAlunosPorDisciplina(Aluno aluno) {
+        ArrayList<Aluno> alunosFiltrados = new ArrayList<>();
+        alunosFiltrados.add(aluno);
+
+        alunoAdapter adapter = new alunoAdapter(this, alunosFiltrados);
+        lvAlunos.setAdapter(adapter);
+    }
+
     private void atualizaLista(ArrayList<Aluno> lista) {
         alunoAdapter adapter = new alunoAdapter(this, lista);
         lvAlunos.setAdapter(adapter);
     }
 
-
-    private void exibirAlunoSelecionado(Aluno aluno){
+    private void exibirAlunoSelecionado(Aluno aluno) {
         StringBuilder notas = new StringBuilder();
         for (Nota nota : aluno.getListaNotas()) {
             notas.append("Disciplina: ").append(nota.getDisciplina())
@@ -91,5 +87,4 @@ public class TelaDeNota extends AppCompatActivity {
         String mensagem = "RA: " + aluno.getRa() + "\nNome: " + aluno.getNome() + "\nNotas:\n" + notas.toString();
         Toast.makeText(this, mensagem, Toast.LENGTH_LONG).show();
     }
-    }
-
+}

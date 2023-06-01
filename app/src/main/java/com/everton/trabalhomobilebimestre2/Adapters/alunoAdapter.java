@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import com.everton.trabalhomobilebimestre2.R;
 import com.everton.trabalhomobilebimestre2.model.Aluno;
+import com.everton.trabalhomobilebimestre2.model.Nota;
 
 import java.util.ArrayList;
 
@@ -37,23 +38,36 @@ public class alunoAdapter extends BaseAdapter {
         return i;
     }
 
-    public View getView(int i, View view, ViewGroup viewGroup) {
-        if (view == null) {
+    public View getView(int position, View convertView, ViewGroup parent) {
+        if (convertView == null) {
             LayoutInflater inflater = LayoutInflater.from(context);
-            view = inflater.inflate(R.layout.list_item_aluno, viewGroup, false);
+            convertView = inflater.inflate(R.layout.list_item_aluno, parent, false);
         }
 
-        Aluno aluno = listaAluno.get(i);
-        TextView tvNomeAluno = view.findViewById(R.id.txtNome);
-        TextView tvRaAluno = view.findViewById(R.id.txtRA);
-        TextView tvBimestre = view.findViewById(R.id.txtBimestre);
-        TextView tvNota = view.findViewById(R.id.txtNota);
+        Aluno aluno = listaAluno.get(position);
+        TextView tvNome = convertView.findViewById(R.id.txtNomeAluno);
+        TextView tvRA = convertView.findViewById(R.id.txtRaAluno);
+        TextView tvDisciplina = convertView.findViewById(R.id.txtDisciplina);
+        TextView tvNota = convertView.findViewById(R.id.txtNota);
 
-        tvNomeAluno.setText(aluno.getNome());
-        tvRaAluno.setText(String.valueOf(aluno.getRa()));
+        tvNome.setText("Aluno: " + aluno.getNome()); // Preencher com o nome do aluno
+        tvRA.setText("RA: " + aluno.getRa()); // Preencher com o RA do aluno
 
-        return view;
+        // Preencher as disciplinas e notas
+        String disciplinasNotas = "";
+        for (Nota nota : aluno.getListaNotas()) {
+            String disciplina = nota.getDisciplina();
+            String bimestre = nota.getBimestre();
+            String notaText = nota.getNota();
+            disciplinasNotas += "Disciplina: " + disciplina + "\nBimestre: " + bimestre + ", Nota: " + notaText + "\n\n";
+        }
+        tvDisciplina.setText(disciplinasNotas);
+
+        return convertView;
     }
+
+
+
 
 
     public View getRetornoView(int i, View view, ViewGroup viewGroup) {

@@ -3,17 +3,26 @@
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
-    <!-- Adicione os elementos do item da lista aqui -->
-    <!-- Por exemplo, TextView para o nome do aluno -->
     <TextView
-        android:id="@+id/txtNome"
+        android:id="@+id/txtNomeAluno"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:textAppearanceMedium" />
 
-    <!-- TextView para o RA do aluno -->
     <TextView
-        android:id="@+id/txtRA"
+        android:id="@+id/txtRaAluno"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/txtDisciplina"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/txtNota"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:textAppearanceMedium" />
