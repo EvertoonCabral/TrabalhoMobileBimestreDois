@@ -11,8 +11,9 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.everton.trabalhomobilebimestre2.Adapters.alunoAdapter;
-import com.everton.trabalhomobilebimestre2.Util.Globais;
+import com.everton.trabalhomobilebimestre2.Globais.Globais;
 import com.everton.trabalhomobilebimestre2.model.Aluno;
+import com.everton.trabalhomobilebimestre2.model.Nota;
 
 import java.util.ArrayList;
 
@@ -27,6 +28,33 @@ public class TelaDeNota extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tela_de_nota);
+
+        spAlunoTelaAluno = findViewById(R.id.spAlunoTelaAluno);
+        // atualizar a lista quando um aluno for selecionado
+        ArrayList<Aluno> listaAlunos = Globais.getListaAlunos();
+        alunoAdapter adapter = new alunoAdapter(this, listaAlunos);
+        spAlunoTelaAluno.setAdapter(adapter);
+        spAlunoTelaAluno.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                Aluno alunoSelecionado = (Aluno) parent.getItemAtPosition(position);
+
+
+                ArrayList<Aluno> listaAlunosSelecionados = new ArrayList<>();
+                listaAlunosSelecionados.add(alunoSelecionado); //criando uma lista para armazenar os alunos neste escopo
+
+
+                alunoAdapter adapter = new alunoAdapter(TelaDeNota.this, listaAlunosSelecionados);
+
+                // Defina o novo adapter para o ListView
+                lvAlunos.setAdapter(adapter);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
 
         lvAlunos = findViewById(R.id.lvListaAluno);
         spAlunoTelaAluno = findViewById(R.id.spAlunoTelaAluno);
@@ -52,6 +80,16 @@ public class TelaDeNota extends AppCompatActivity {
 
 
     private void exibirAlunoSelecionado(Aluno aluno){
-        Toast.makeText(this, "RA: "+aluno.getRa()+" Nome: "+aluno.getNome(), Toast.LENGTH_LONG).show();
+        StringBuilder notas = new StringBuilder();
+        for (Nota nota : aluno.getListaNotas()) {
+            notas.append("Disciplina: ").append(nota.getDisciplina())
+                    .append(", Bimestre: ").append(nota.getBimestre())
+                    .append(", Nota: ").append(nota.getNota())
+                    .append("\n");
+        }
+
+        String mensagem = "RA: " + aluno.getRa() + "\nNome: " + aluno.getNome() + "\nNotas:\n" + notas.toString();
+        Toast.makeText(this, mensagem, Toast.LENGTH_LONG).show();
     }
-}
+    }
+

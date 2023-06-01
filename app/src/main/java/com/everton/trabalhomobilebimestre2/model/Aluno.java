@@ -5,27 +5,26 @@ import android.os.Parcelable;
 
 import java.util.ArrayList;
 
-public class Aluno implements Parcelable {
+import android.os.Parcel;
+import android.os.Parcelable;
 
+import java.util.ArrayList;
+
+public class Aluno implements Parcelable {
     private String ra;
     private String nome;
-    private ArrayList<String> listadisciplina;
-    private ArrayList<String> listaNotas;
+    private ArrayList<Nota> listaNotas;
 
-    public Aluno(String ra, String nome, String disciplina, String nota) {
+    public Aluno(String ra, String nome) {
         this.ra = ra;
         this.nome = nome;
-        this.listadisciplina = new ArrayList<>();
-        this.listadisciplina.add(disciplina);
         this.listaNotas = new ArrayList<>();
-        this.listaNotas.add(nota);
     }
 
     protected Aluno(Parcel in) {
         ra = in.readString();
         nome = in.readString();
-        listadisciplina = in.createStringArrayList();
-        listaNotas = in.createStringArrayList();
+        listaNotas = in.createTypedArrayList(Nota.CREATOR);
     }
 
     public static final Creator<Aluno> CREATOR = new Creator<Aluno>() {
@@ -48,20 +47,20 @@ public class Aluno implements Parcelable {
         return nome;
     }
 
-    public ArrayList<String> getListadisciplina() {
-        return listadisciplina;
+    public ArrayList<Nota> getListaNotas() {
+        return listaNotas;
     }
 
-    public ArrayList<String> getListaNotas() {
-        return listaNotas;
+    public void adicionarNota(String disciplina, String bimestre, String nota) {
+        Nota novaNota = new Nota(disciplina, bimestre, nota);
+        listaNotas.add(novaNota);
     }
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(ra);
         dest.writeString(nome);
-        dest.writeStringList(listadisciplina);
-        dest.writeStringList(listaNotas);
+        dest.writeTypedList(listaNotas);
     }
 
     @Override

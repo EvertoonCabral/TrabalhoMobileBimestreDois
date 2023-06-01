@@ -46,12 +46,30 @@ public class alunoAdapter extends BaseAdapter {
         Aluno aluno = listaAluno.get(i);
         TextView tvNomeAluno = view.findViewById(R.id.txtNome);
         TextView tvRaAluno = view.findViewById(R.id.txtRA);
+        TextView tvBimestre = view.findViewById(R.id.txtBimestre);
+        TextView tvNota = view.findViewById(R.id.txtNota);
 
-        tvRaAluno.setText(String.valueOf(aluno.getRa()));
         tvNomeAluno.setText(aluno.getNome());
+        tvRaAluno.setText(String.valueOf(aluno.getRa()));
 
         return view;
     }
+
+
+    public View getRetornoView(int i, View view, ViewGroup viewGroup) {
+        if (view == null) {
+            LayoutInflater inflater = LayoutInflater.from(context);
+            view = inflater.inflate(android.R.layout.simple_spinner_item, viewGroup, false);
+        }
+
+        Aluno aluno = listaAluno.get(i);
+        TextView tvNomeAluno = view.findViewById(android.R.id.text1);
+
+        tvNomeAluno.setText(aluno.getNome()); // vai exibir apenas o nome do aluno
+
+        return view;
+    }
+
 
 
 }

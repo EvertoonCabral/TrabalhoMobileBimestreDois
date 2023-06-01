@@ -23,8 +23,8 @@ public class MainActivity extends AppCompatActivity {
     private Spinner spDisciplina, spBimestre;
     private Button btnAdicionar, btnverNota, btnverMedia;
 
-    private String[] disciplinas = {"Selecione uma disciplina","POO", "Desenvolvimento Mobile", "Desenvolvimento Web", "Frameworks", "Gestão de Projetos"};
-    private String[] bimestres = {"Selecione...","1º Bimestre", "2º Bimestre", "3º Bimestre", "4º Bimestre"};
+    private String[] disciplinas = {"POO", "Desenvolvimento Mobile", "Desenvolvimento Web", "Frameworks", "Gestão de Projetos"};
+    private String[] bimestres = {"1ºBim", "2ºBim", "3ºBim", "4ºBim"};
     private Globais globais;
 
 
@@ -51,24 +51,23 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String nomeAluno = edNome.getText().toString();
                 String raAluno = edRa.getText().toString();
-                String notaAluno = edNota.getText().toString();
-                String bimestreAluno = spBimestre.getSelectedItem().toString();
-                String disciplinaAluno = spDisciplina.getSelectedItem().toString();
 
-                Aluno aluno = new Aluno(raAluno, nomeAluno, disciplinaAluno, notaAluno);
+                Aluno aluno = new Aluno(raAluno, nomeAluno);
                 Globais.listaAlunos.add(aluno);
-                // Adiciona o aluno à lista de alunos em Globais para mandar
-                //para a tela de nota
+
 
                 Toast.makeText(MainActivity.this, "Usuário Salvo com Sucesso!", Toast.LENGTH_SHORT).show();
+                limparCampos();
             }
-        });
+                    });
 
         btnverNota.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Intent intent = new Intent(MainActivity.this, TelaDeNota.class);
-                ArrayList<Aluno> listaAlunos = globais.getListaAlunos(); // Obtenha a lista de alunos da classe Globais
+                ArrayList<Aluno> listaAlunos = globais.getListaAlunos(); //Ali em cima eu mandei o aluno para a lista aluno no globais, agora to trazendo para esta lista
+
                 if (listaAlunos != null) {
                     intent.putExtra("listaAlunos", listaAlunos);
                     startActivity(intent);
@@ -97,5 +96,12 @@ public class MainActivity extends AppCompatActivity {
         btnAdicionar = findViewById(R.id.btnAdicionar);
         btnverMedia = findViewById(R.id.btnverMedia);
         btnverNota = findViewById(R.id.btnverNota);
+    }
+    private void limparCampos() {
+        edNome.setText("");
+        edRa.setText("");
+        spDisciplina.setSelection(0);
+        spBimestre.setSelection(0);
+        edNota.setText("");
     }
 }
