@@ -3,28 +3,74 @@
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/txtNomeAluno"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:textAppearanceMedium" />
+        android:orientation="horizontal"
+        android:layout_marginTop="15dp">
 
-    <TextView
-        android:id="@+id/txtRaAluno"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:textAppearanceMedium" />
+        <TextView
+            android:="@+id/txtMateria"
+            android:layout_width="250dp"
+            android:layout_height="match_parent"
+            android:text="Materia:"
+            android:textAllCaps="true"
+            android:textStyle="bold"
+            android:layout_marginLeft="15dp"
+            />
 
-    <TextView
-        android:id="@+id/txtDisciplina"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:textAppearanceMedium" />
+        <TextView
+            android:id="@+id/txtMedia"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Media:"
+            android:textAllCaps="true"
+            android:textStyle="bold"
+            />
 
-    <TextView
-        android:id="@+id/txtNota"
-        android:layout_width="wrap_content"
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:textAppearanceMedium" />
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/ItemB1"
+            android:layout_width="95dp"
+            android:layout_height="wrap_content"
+            android:text="1ªB: "
+            android:textStyle="bold"
+            android:layout_marginLeft="10dp"
+            />
+
+        <TextView
+            android:id="@+id/ItemB2"
+            android:layout_width="95dp"
+            android:layout_height="wrap_content"
+            android:text="2ªB: "
+            android:textStyle="bold"
+            android:layout_marginLeft="10dp"
+            />
+
+        <TextView
+            android:id="@+id/ItemB3"
+            android:layout_width="95dp"
+            android:layout_height="wrap_content"
+            android:text="3ªB: "
+            android:textStyle="bold"
+            android:layout_marginLeft="10dp"
+            />
+
+        <TextView
+            android:id="@+id/ItemB4"
+            android:layout_width="95dp"
+            android:layout_height="wrap_content"
+            android:text="4ªB: "
+            android:textStyle="bold"
+            android:layout_marginLeft="10dp"
+            />
+
+    </LinearLayout>
 
 </LinearLayout>

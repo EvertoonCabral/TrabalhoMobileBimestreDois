@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="15dp">
+
+        <TextView
+            android:id="@+id/txtNome"
+            android:layout_width="230dp"
+            android:layout_height="match_parent"
+            android:text="Aluno: "
+            android:textAllCaps="true"
+            android:layout_marginLeft="10dp"
+            android:textStyle="bold"/>
+
+
+        <TextView
+            android:id="@+id/txtRa"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="RA:"
+            android:layout_marginLeft="10dp"
+            android:textStyle="bold"/>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/txtMediaAdapter"
+            android:layout_width="240dp"
+            android:layout_height="match_parent"
+            android:text="MEDIA:"
+            android:textStyle="bold"
+            android:layout_marginLeft="10dp"
+            />
+
+        <TextView
+            android:id="@+id/txtAprovado"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Aprovado: "
+            android:textAllCaps="true"
+            android:textStyle="bold"/>
+    </LinearLayout>
+
+
+
+</LinearLayout>

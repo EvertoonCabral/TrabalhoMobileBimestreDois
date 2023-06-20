@@ -1,19 +1,19 @@
-
 package com.everton.trabalhomobilebimestre2;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-import com.everton.trabalhomobilebimestre2.databinding.ActivityTelaMediaBinding;
+import com.everton.trabalhomobilebimestre2.databinding.ActivityTelaDeNotaBinding;
 
-public class TelaMedia extends AppCompatActivity {
+public class TelaNota extends AppCompatActivity {
 
-    ActivityTelaMediaBinding binding;
+    ActivityTelaDeNotaBinding binding;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityTelaMediaBinding.inflate(getLayoutInflater());
+        binding = ActivityTelaDeNotaBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
     }
 }

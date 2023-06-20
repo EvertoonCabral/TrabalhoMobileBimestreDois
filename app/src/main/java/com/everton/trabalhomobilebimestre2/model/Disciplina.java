@@ -4,27 +4,79 @@ import java.util.List;
 
 public class Disciplina {
 
-    private String nome;
-    private List<Aluno>listaDeAlunos;
+   private int id;
+   private String nomeDisciplina;
+   private int primeiroBi, segundoBi, TerceiroBi, QuartoBi;
 
-    public Disciplina(String nome, List<Aluno> listaDeAlunos) {
-        this.nome = nome;
-        this.listaDeAlunos = listaDeAlunos;
+    public Disciplina() {
     }
 
-    public String getNome() {
-        return nome;
+    public Disciplina(int id, String nomeDisciplina, int primeiroBi, int segundoBi, int terceiroBi, int quartoBi) {
+        this.id = id;
+        this.nomeDisciplina = nomeDisciplina;
+        this.primeiroBi = primeiroBi;
+        this.segundoBi = segundoBi;
+        this.TerceiroBi = terceiroBi;
+        this.QuartoBi = quartoBi;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public int getId() {
+        return id;
     }
 
-    public List<Aluno> getListaDeAlunos() {
-        return listaDeAlunos;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public void setListaDeAlunos(List<Aluno> listaDeAlunos) {
-        this.listaDeAlunos = listaDeAlunos;
+    public String getNomeDisciplina() {
+        return nomeDisciplina;
+    }
+
+    public void setNomeDisciplina(String nomeDisciplina) {
+        this.nomeDisciplina = nomeDisciplina;
+    }
+
+    public int getPrimeiroBi() {
+        return primeiroBi;
+    }
+
+    public void setPrimeiroBi(int primeiroBi) {
+        this.primeiroBi = primeiroBi;
+    }
+
+    public int getSegundoBi() {
+        return segundoBi;
+    }
+
+    public void setSegundoBi(int segundoBi) {
+        this.segundoBi = segundoBi;
+    }
+
+    public int getTerceiroBi() {
+        return TerceiroBi;
+    }
+
+    public void setTerceiroBi(int terceiroBi) {
+        TerceiroBi = terceiroBi;
+    }
+
+    public int getQuartoBi() {
+        return QuartoBi;
+    }
+
+    public void setQuartoBi(int quartoBi) {
+        QuartoBi = quartoBi;
+    }
+
+    @Override
+    public String toString() {
+        return "Disciplina{" +
+                "id=" + id +
+                ", nomeDisciplina='" + nomeDisciplina + '\'' +
+                ", primeiroBi=" + primeiroBi +
+                ", segundoBi=" + segundoBi +
+                ", TerceiroBi=" + TerceiroBi +
+                ", QuartoBi=" + QuartoBi +
+                '}';
     }
 }

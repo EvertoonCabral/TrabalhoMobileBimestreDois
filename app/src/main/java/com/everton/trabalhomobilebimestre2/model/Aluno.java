@@ -10,67 +10,69 @@ import android.os.Parcelable;
 
 import java.util.ArrayList;
 
-public class Aluno implements Parcelable {
+public class Aluno  {
     private String ra;
     private String nome;
-    private ArrayList<Nota> listaNotas;
+    private Disciplina disciplina;
+    private int id;
 
-    private String disciplina;
+    public Aluno() {
+    }
 
-    public Aluno(String ra, String nome) {
+    public Aluno(String ra, String nome, Disciplina disciplina, int id) {
         this.ra = ra;
         this.nome = nome;
-        this.listaNotas = new ArrayList<>();
-    }
-
-    protected Aluno(Parcel in) {
-        ra = in.readString();
-        nome = in.readString();
-        listaNotas = in.createTypedArrayList(Nota.CREATOR);
-    }
-
-    public static final Creator<Aluno> CREATOR = new Creator<Aluno>() {
-        @Override
-        public Aluno createFromParcel(Parcel in) {
-            return new Aluno(in);
-        }
-
-        @Override
-        public Aluno[] newArray(int size) {
-            return new Aluno[size];
-        }
-    };
-
-    public String getDisciplina() {
-        return disciplina;
+        this.disciplina = disciplina;
+        this.id = id;
     }
 
     public String getRa() {
         return ra;
     }
 
+    public void setRa(String ra) {
+        this.ra = ra;
+    }
+
     public String getNome() {
         return nome;
     }
 
-    public ArrayList<Nota> getListaNotas() {
-        return listaNotas;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
-    public void adicionarNota(String disciplina, String bimestre, String nota) {
-        Nota novaNota = new Nota(disciplina, bimestre, nota);
-        listaNotas.add(novaNota);
+    public Disciplina getDisciplina() {
+        return disciplina;
+    }
+
+    public void setDisciplina(Disciplina disciplina) {
+        this.disciplina = disciplina;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(ra);
-        dest.writeString(nome);
-        dest.writeTypedList(listaNotas);
+    public String toString() {
+        return "Aluno{" +
+                "ra='" + ra + '\'' +
+                ", nome='" + nome + '\'' +
+                ", disciplina=" + disciplina +
+                ", id=" + id +
+                '}';
     }
 
-    @Override
-    public int describeContents() {
-        return 0;
+    public int CalcularMedia(int b1, int b2,int b3, int b4){
+
+      int media = (b1 + b2 + b3 + b4)/4;
+
+        return media;
     }
+
 }
