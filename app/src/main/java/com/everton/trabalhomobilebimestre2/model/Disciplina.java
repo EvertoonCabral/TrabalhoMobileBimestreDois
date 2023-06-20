@@ -6,7 +6,7 @@ public class Disciplina {
 
    private int id;
    private String nomeDisciplina;
-   private int primeiroBi, segundoBi, TerceiroBi, QuartoBi;
+   private int primeiroBi =0, segundoBi=0, TerceiroBi=0, QuartoBi=0;
 
     public Disciplina() {
     }

@@ -8,6 +8,6 @@ import java.util.List;
 
 public class Globais {
 
-    public static ArrayList<Aluno> listaNotas;
+    public static ArrayList<Aluno> listaNotasGlobais;
 
 }
