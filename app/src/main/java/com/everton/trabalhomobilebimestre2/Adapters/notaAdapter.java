@@ -17,6 +17,11 @@ import java.util.ArrayList;
 public class notaAdapter extends BaseAdapter {
 
 
+    public notaAdapter(Context context, ArrayList<Aluno> lista) {
+        this.context = context;
+        this.listaAluno = lista;
+    }
+
     private ArrayList<Aluno> listaAluno;
     private Context context;
 

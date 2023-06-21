@@ -13,11 +13,16 @@ import java.util.ArrayList;
 
 public class mediaAdapter  extends BaseAdapter {
 
+
+    public mediaAdapter(Context context, ArrayList<Aluno> lista) {
+        this.context = context;
+        this.listaMedia = lista;
+    }
+
     private ArrayList<Aluno> listaMedia;
     private Context context;
     private int mediaNota;
     private String aprovado;
-
 
 
     @Override
@@ -34,12 +39,11 @@ public class mediaAdapter  extends BaseAdapter {
     public long getItemId(int i) {
         return 0;
     }
+
     @Override
     public View getView(int position, View view, ViewGroup parent) {
         if (view == null) {
-            view = LayoutInflater.from(context).
-                    inflate(R.layout.item_lista_media,
-                            parent, false);
+            view = LayoutInflater.from(context).inflate(R.layout.item_list_media, parent, false);
         }
 
         Aluno aluno = listaMedia.get(position);
@@ -50,9 +54,9 @@ public class mediaAdapter  extends BaseAdapter {
                 + listaMedia.get(position).getDisciplina().getQuartoBi())
                 / 4;
 
-        if(mediaNota >= 6){
+        if (mediaNota >= 6) {
             aprovado = "Aprovado!";
-        }else{
+        } else {
             aprovado = "Reprovado!";
         }
 
@@ -64,8 +68,9 @@ public class mediaAdapter  extends BaseAdapter {
         txtAluno.setText(aluno.getNome());
         txtRa.setText(txtRa.getText().toString() + aluno.getRa());
         txtAprovacao.setText(aprovado);
-        tvMediaFinal.setText("Média Final: "+ String.valueOf(mediaNota));
+        tvMediaFinal.setText("Média Final: " + String.valueOf(mediaNota));
 
         return view;
 
+    }
 }

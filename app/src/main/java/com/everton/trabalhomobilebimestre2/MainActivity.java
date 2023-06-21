@@ -29,7 +29,8 @@ public class MainActivity extends AppCompatActivity {
 
     private String[] listaBimestres = new String[]{"Escolha...", "1ºB", "2ºB", "3ºB", "4ªB"};
     private Disciplina DisciplinaAux;
-    private String aux;
+    private String teste;
+    private String aux2;
 
 
     @Override
@@ -103,8 +104,8 @@ public class MainActivity extends AppCompatActivity {
         binding.spBimestre.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-
-                aux = (String) binding.spBimestre.getItemAtPosition(i);
+                Disciplina disciplina = (Disciplina) binding.spBimestre.getItemAtPosition(i);
+                teste = disciplina.getNomeDisciplina();
 
             }
 
@@ -144,7 +145,97 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(this, TelaMedia.class);
             startActivity(intent);
     }
+    private void salvar() {
+
+        int nota = 0;
+        if (!binding.edNota.getText().toString().isEmpty()) {
+            nota = Integer.parseInt(binding.edNota.getText().toString());
+        }
+        if (binding.edNome.getText().toString().isEmpty()) {
+            binding.edNome.setError("Informe o Nome do Aluno");
+        }
+        if (binding.edNota.getText().toString().isEmpty()) {
+            binding.edNota.setError("Informe a nota");
+        }
+        if (binding.edRa.getText().toString().isEmpty()) {
+            binding.edRa.setError("Informe o RA do Aluno");
+        }
+        if (nota < 0 || nota > 10) {
+            binding.edNota.setError("Informe uma nota entre 0 e 10");
+        } else if (!binding.edNome.getText().toString().isEmpty()) {
+        }
+        try {
+
+            Aluno aluno = new Aluno();
+
+            int posicao= -1;
+
+            for (int i = 0; i < Globais.listaNotasGlobais.size(); i++) {
+
+                if (String.valueOf(Globais.listaNotasGlobais.get(i).getRa()).equals(binding.edRa.getText().toString())
+                        && Globais.listaNotasGlobais.get(i).getNome().equals(binding.edNome.getText().toString())
+                        && Globais.listaNotasGlobais.get(i).getDisciplina().getNomeDisciplina().equals(DisciplinaAux.getNomeDisciplina())) {
+
+                    posicao = i;
+                }
+            }
+
+            if (posicao == -1) {
+                aluno.setNome(binding.edNome.getText().toString());
+                aluno.setRa(binding.edRa.getText().toString());
+                aluno.setDisciplina(DisciplinaAux);
 
 
+                switch (aux2) {
+                    case "1 Bi":
+                        aluno.getDisciplina().setPrimeiroBi(Integer.parseInt(binding.edNota.getText().toString()));
+                        break;
+                    case "2 Bi":
+                        aluno.getDisciplina().setSegundoBi(Integer.parseInt(binding.edNota.getText().toString()));
+                        break;
+                    case "3 Bi":
+                        aluno.getDisciplina().setTerceiroBi(Integer.parseInt(binding.edNota.getText().toString()));
+                        break;
+                    case "4 Bi":
+                        aluno.getDisciplina().setQuartoBi(Integer.parseInt(binding.edNota.getText().toString()));
+                        break;
+                }
+                Globais.listaNotasGlobais.add(aluno);
+                posicao = -1;
+            }
 
+
+            if (posicao != -1) {
+
+                Globais.listaNotasGlobais.get(posicao).setNome(binding.edNome.getText().toString());
+                Globais.listaNotasGlobais.get(posicao).setRa(binding.edRa.getText().toString());
+                Globais.listaNotasGlobais.get(posicao).setDisciplina(DisciplinaAux);
+
+                switch (aux2) {
+                    case "1ºB":
+                        Globais.listaNotasGlobais.get(posicao).getDisciplina().setPrimeiroBi(Integer.parseInt(binding.edNota.getText().toString()));
+                        break;
+                    case "2ºB":
+                        Globais.listaNotasGlobais.get(posicao).getDisciplina().setSegundoBi(Integer.parseInt(binding.edNota.getText().toString()));
+                        break;
+                    case "3ºB":
+                        Globais.listaNotasGlobais.get(posicao).getDisciplina().setTerceiroBi(Integer.parseInt(binding.edNota.getText().toString()));
+                        break;
+                    case "4ºB":
+                        Globais.listaNotasGlobais.get(posicao).getDisciplina().setQuartoBi(Integer.parseInt(binding.edNota.getText().toString()));
+                        break;
+                }
+                posicao = -1;
+            }
+            Toast.makeText(this, "Cadastro concluido.", Toast.LENGTH_LONG).show();
+
+
+        } catch (Exception ex) {
+            Log.e("Cadastro não concluido", ex.getMessage());
+        }
     }
+
+
+
+
+}
